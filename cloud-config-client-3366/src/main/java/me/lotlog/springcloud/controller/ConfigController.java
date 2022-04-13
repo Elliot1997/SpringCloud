@@ -1,14 +1,13 @@
-package me.lotlog.springboot.controller;
+package me.lotlog.springcloud.controller;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
 @RefreshScope
-public class ConfigClientController {
-
+@RestController
+public class ConfigController {
     @Value("${server.port}")
     private String serverPort;
 
@@ -16,7 +15,8 @@ public class ConfigClientController {
     private String configInfo;
 
     @GetMapping("/configInfo")
-    public String getConfigInfo() {
-        return serverPort+"----"+configInfo;
+    public String configInfo()
+    {
+        return "serverPort: "+serverPort+"\t\n\n configInfo: "+configInfo;
     }
 }
